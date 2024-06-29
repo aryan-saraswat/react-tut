@@ -1,0 +1,15 @@
+.words {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.words-holder {
+    display: flex;
+    flex-direction: row;
+    font-size: 4rem;
+}
+
+.word {
+    margin: 0px 10px;
+}
