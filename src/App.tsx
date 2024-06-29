@@ -1,10 +1,10 @@
 import "./App.css";
-import TextComponent from "./components/game-area/Text";
+import GameArea from "./components/game-area/GameArea";
 
 function App() {
   return (
     <div className="App">
-      <TextComponent num={5}></TextComponent>
+      <GameArea num={5}></GameArea>
     </div>
   );
 }

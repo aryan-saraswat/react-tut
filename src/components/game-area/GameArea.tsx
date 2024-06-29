@@ -1,17 +1,19 @@
 import { Component } from "react";
+import InputBox from "../input-box/InputBox";
 import WordsHolder from "../words-holder/WordsHolder";
+import "./GameArea.css";
 
-interface TextComponentProps {
+interface GameAreaProps {
   num: number;
 }
 
-interface TextComponentState {
+interface GameAreaState {
   words: string[];
 }
 
-class TextComponent extends Component<TextComponentProps, TextComponentState> {
+class GameArea extends Component<GameAreaProps, GameAreaState> {
   words: string[] = [];
-  constructor(props: TextComponentProps) {
+  constructor(props: GameAreaProps) {
     super(props);
     this.state = {
       words: [],
@@ -38,11 +40,12 @@ class TextComponent extends Component<TextComponentProps, TextComponentState> {
 
   render() {
     return (
-      <div>
+      <div className="game-area">
         <WordsHolder words={this.state.words}></WordsHolder>
+        <InputBox></InputBox>
       </div>
     );
   }
 }
 
-export default TextComponent;
+export default GameArea;
