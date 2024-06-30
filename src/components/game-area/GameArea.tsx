@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { WordEntry } from "../../types/types";
 import InputBox from "../input-box/InputBox";
 import WordsHolder from "../words-holder/WordsHolder";
 import "./GameArea.css";
@@ -8,7 +9,7 @@ interface GameAreaProps {
 }
 
 interface GameAreaState {
-  words: string[];
+  words: WordEntry[];
 }
 
 class GameArea extends Component<GameAreaProps, GameAreaState> {
@@ -32,9 +33,15 @@ class GameArea extends Component<GameAreaProps, GameAreaState> {
       },
     })
       .then((response) => response.json())
-      .then((data) => {
-        this.setState({ words: data });
-        console.log("data: ", data);
+      .then((data: string[]) => {
+        let wordEntries: WordEntry[] = data.map((word) => {
+          return {
+            word: word,
+            guessed: false,
+            guessedCorrectly: false,
+          };
+        });
+        this.setState({ words: wordEntries });
       });
   }
 

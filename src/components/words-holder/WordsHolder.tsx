@@ -1,8 +1,9 @@
 import { useEffect } from "react";
+import { WordEntry } from "../../types/types";
 import "./WordsHolder.css";
 
 interface WordsHolderProps {
-  words: string[];
+  words: WordEntry[];
 }
 
 function WordsHolder(props: WordsHolderProps) {
@@ -16,7 +17,7 @@ function WordsHolder(props: WordsHolderProps) {
         {props.words.map((word, i) => {
           return (
             <div key={i} className="word">
-              {word}
+              {word.word}
             </div>
           );
         })}
