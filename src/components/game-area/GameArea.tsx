@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { WordEntry } from "../../types/types";
 import InputBox from "../input-box/InputBox";
+import Timekeeper from "../timekeeper/Timekeeper";
 import WordsHolder from "../words-holder/WordsHolder";
 import "./GameArea.css";
 
@@ -42,7 +43,8 @@ class GameArea extends Component<GameAreaProps, GameAreaState> {
           };
         });
         this.setState({ words: wordEntries });
-      });
+      })
+      .catch((err) => console.log(err));
   }
 
   render() {
@@ -50,6 +52,7 @@ class GameArea extends Component<GameAreaProps, GameAreaState> {
       <div className="game-area">
         <WordsHolder words={this.state.words}></WordsHolder>
         <InputBox></InputBox>
+        <Timekeeper></Timekeeper>
       </div>
     );
   }

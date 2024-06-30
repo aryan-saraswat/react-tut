@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { WordEntry } from "../../types/types";
 import "./WordsHolder.css";
 
@@ -7,10 +6,6 @@ interface WordsHolderProps {
 }
 
 function WordsHolder(props: WordsHolderProps) {
-  useEffect(() => {
-    console.log("in useeffect");
-  });
-
   return (
     <div className="words">
       <div className="words-holder">
