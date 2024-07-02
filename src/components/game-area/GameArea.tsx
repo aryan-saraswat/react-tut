@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { GameContext } from "../../App";
 import { WordEntry } from "../../types/types";
@@ -26,16 +27,10 @@ function GameArea(props: GameAreaProps) {
 
   async function fetchWords(num: number): Promise<WordEntry[] | undefined> {
     try {
-      const response = await fetch("http://localhost:8080/get-words", {
-        body: JSON.stringify({
-          numberOfWords: numberOfWords,
-        }),
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const axiosReq = axios.post("http://localhost:8080/get-words", {
+        numberOfWords: num,
       });
-      const data: string[] = await response.json();
+      const data: string[] = await (await axiosReq).data;
       return data.map((word) => ({
         guessed: false,
         guessedCorrectly: false,
