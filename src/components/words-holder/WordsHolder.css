@@ -13,3 +13,15 @@
 .word {
     margin: 0px 10px;
 }
+
+.wrong-guess {
+    color: red;
+}
+
+.correct-guess {
+    color: green;
+}
+
+.no-guess {
+    color: black;
+}
