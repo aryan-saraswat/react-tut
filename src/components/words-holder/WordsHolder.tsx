@@ -6,12 +6,13 @@ interface WordsHolderProps {
 }
 
 function WordsHolder(props: WordsHolderProps) {
+  console.log("from wordsholder: ", props.words);
   function wordStyle(word: WordEntry): string {
-    return word.guessed
-      ? word.guessedCorrectly
-        ? "correct-guess"
-        : "wrong-guess"
-      : "no-guess";
+    if (word.guessed) {
+      return word.guessedCorrectly ? "correct-guess" : "wrong-guess";
+    } else {
+      return "no-guess";
+    }
   }
 
   return (
@@ -19,7 +20,7 @@ function WordsHolder(props: WordsHolderProps) {
       <div className="words-holder">
         {props.words.map((word, i) => {
           return (
-            <div key={i} className={`word + ${wordStyle(word)}`}>
+            <div key={i} className={`word ${wordStyle(word)}`}>
               {word.word}
             </div>
           );

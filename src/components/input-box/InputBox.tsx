@@ -1,12 +1,22 @@
 import { useState } from "react";
 import "./InputBox.css";
 
-function InputBox() {
+interface InputBoxProps {
+  updateWords(word: string): void;
+}
+
+function InputBox(props: InputBoxProps) {
   const [inputValue, setInputValue] = useState<string>("");
 
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
     const enteredText = event.target.value;
-    setInputValue(enteredText.endsWith(" ") ? "" : enteredText);
+
+    if (enteredText.endsWith(" ")) {
+      props.updateWords(enteredText.trim());
+      setInputValue("");
+    } else {
+      setInputValue(enteredText);
+    }
   }
 
   return (
