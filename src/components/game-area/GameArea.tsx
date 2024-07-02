@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { GameContext } from "../../App";
 import { WordEntry } from "../../types/types";
 import InputBox from "../input-box/InputBox";
 import Timekeeper from "../timekeeper/Timekeeper";
@@ -12,8 +13,10 @@ interface GameAreaProps {
 function GameArea(props: GameAreaProps) {
   const [words, setWords] = useState<WordEntry[]>([]);
   const numberOfWords = props.num;
+  const gameContext = useContext(GameContext);
 
   useEffect(() => {
+    console.log(gameContext);
     const fetchAndSetWords = async () => {
       const fetchedWords = await fetchWords(numberOfWords);
       if (fetchedWords) setWords(fetchedWords);
